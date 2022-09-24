@@ -1,4 +1,4 @@
-const CurrencySelector = ({ currencyList, currentCurrency, onChangeCurrency }) => {
+const CurrencySelector = ({ currencyList = [], currentCurrency, onChangeCurrency }) => {
   return (
     <select value={ currentCurrency } onChange={ onChangeCurrency }>
       {
