@@ -1,7 +1,7 @@
-const CurrencyRow = ({ currency }) => {
+const CurrencyRow = ({ currency, onChangeCurrencyInput }) => {
   
   return (
-      <input type='number' value={ currency } />
+      <input onChange={ onChangeCurrencyInput } type='number' value={ currency } />
   )
 }
 
