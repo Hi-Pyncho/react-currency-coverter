@@ -12,7 +12,13 @@ async function getCurrencySymbols() {
     throw new Error(err)
   })
 
-  return response.json()
+  const rawAnswer = await response.json()
+  const symbolsList = Object.keys(rawAnswer.symbols)
+
+  return {
+    raw: rawAnswer,
+    symbols: symbolsList
+  }
 }
 
 export { getCurrencySymbols }
