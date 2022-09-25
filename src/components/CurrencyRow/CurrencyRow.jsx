@@ -1,7 +1,14 @@
+import TextField from '@material-ui/core/TextField';
+
 const CurrencyRow = ({ currency, onChangeCurrencyInput }) => {
-  
   return (
-      <input onChange={ onChangeCurrencyInput } type='number' value={ currency } />
+      <TextField 
+        onChange={ onChangeCurrencyInput } 
+        type='number' value={ currency } 
+        id="outlined-basic" 
+        label="Outlined" 
+        variant="outlined" 
+      />
   )
 }
 
