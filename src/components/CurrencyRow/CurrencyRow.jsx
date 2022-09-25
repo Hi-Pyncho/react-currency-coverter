@@ -7,7 +7,7 @@ const CurrencyRow = ({ currency, onChangeCurrencyInput }) => {
         onChange={ onChangeCurrencyInput } 
         type='number' value={ currency } 
         id="outlined-basic" 
-        label="Outlined" 
+        label="Currency" 
         variant="outlined" 
       />
   )
