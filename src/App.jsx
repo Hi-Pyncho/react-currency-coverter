@@ -1,9 +1,10 @@
 import { CurrencyRow, CurrencySelector, ResultRow } from "./components";
 import { useEffect, useState } from "react";
-import { getCurrencySymbols, convertCurrency} from "./api/currency";
+import { convertCurrency} from "./api/currency";
 import { detectCurrency } from "./api/detectCurrency";
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import { getCurrencyData, getDefaultCurrencySymbol } from "./utils/getCurrencyData";
 
 import './App.css'
 
@@ -15,38 +16,42 @@ function App() {
   const [currencyValueTo, setCurrencyValueTo] = useState(0)
 
   useEffect(() => {
-    getCurrencySymbols().then(symbols => {
-      setSymbolList(symbols)
-      setCurrentCurrencyTo(symbols[0])
-    })
+    setSymbolList(getCurrencyData())
+    setCurrentCurrencyTo(getDefaultCurrencySymbol())
+  
     detectCurrency().then(data => {
       setCurrentCurrencyFrom(data)
     })
   }, [])
 
+  const updateCurrency = (value, currencyTo) => {
+    convertCurrency(currentCurrencyFrom, currencyTo, value).then(result => {
+      setCurrencyValueTo(result)
+    })
+  }
+
   const onChangeCurrency = (type) => (event) => {
+    const selectValue = event.target.value
+    
     switch (type) {
       case 'from':
-        setCurrentCurrencyFrom(event.target.value)
+        setCurrentCurrencyFrom(selectValue)
         break;
       case 'to':
-        setCurrentCurrencyTo(event.target.value)
+        setCurrentCurrencyTo(selectValue)
         break;
       default:
         throw new Error('Unexpected type of currency')
     }
-    
-    convertCurrency(currentCurrencyFrom, currentCurrencyTo, currencyValueFrom).then(result => {
-      setCurrencyValueTo(result)
-    })
+
+    updateCurrency(currencyValueFrom, selectValue)
   }
 
   const onChangeCurrencyInput = (event) => {
     const value = event.target.value
     setCurrencyValueFrom(value)
-    convertCurrency(currentCurrencyFrom, currentCurrencyTo, value).then(result => {
-      setCurrencyValueTo(result)
-    })
+
+    updateCurrency(value, currentCurrencyTo)
   }
 
   return (
@@ -97,4 +102,4 @@ function App() {
   )
 }
 
-export default App;
+export default App
