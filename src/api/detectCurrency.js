@@ -13,8 +13,8 @@ const detectCurrency = async () => {
   })
 
   const data = await response.json()
-
-  return data.currency.code
+  
+  return data.currency.code.toLowerCase()
 }
 
 export { detectCurrency }
