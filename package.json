@@ -2,7 +2,7 @@
   "name": "currency-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Hi-Pyncho.github.io/react-currency-coverter",
+  "homepage": "https://hi-pyncho.github.io/react-currency-coverter",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "gh-pages": "^4.0.0",
