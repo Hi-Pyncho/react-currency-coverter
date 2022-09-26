@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-currency-coverter/static/css/main.f31f7f43.css",
+    "main.js": "/react-currency-coverter/static/js/main.ea62bc2c.js",
+    "index.html": "/react-currency-coverter/index.html",
+    "main.f31f7f43.css.map": "/react-currency-coverter/static/css/main.f31f7f43.css.map",
+    "main.ea62bc2c.js.map": "/react-currency-coverter/static/js/main.ea62bc2c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f31f7f43.css",
+    "static/js/main.ea62bc2c.js"
+  ]
+}
