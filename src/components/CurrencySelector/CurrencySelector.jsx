@@ -16,8 +16,11 @@ const useStyles = makeStyles((theme) => ({
 
 const CurrencySelector = ({ currencyList = [], currentCurrency, onChangeCurrency, direction }) => {
   const classes = useStyles();
-  const options = currencyList.map((symbol) => <MenuItem value={ symbol } key={ symbol }>{ symbol }</MenuItem>)
+  const options = currencyList.map(([symbol, description]) => {
+    return <MenuItem value={ symbol } key={ symbol }>{ description }</MenuItem>
+  })
   const label = direction === 'from' ? 'Convert From' : 'Convert To'
+  
   return (
     <FormControl className={classes.formControl}>
       <InputLabel id="demo-simple-select-label">{ label }</InputLabel>
