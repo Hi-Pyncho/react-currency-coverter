@@ -3,6 +3,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { ISymbolList, IMUISelect } from '../../types';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -14,9 +15,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CurrencySelector = ({ currencyList = [], currentCurrency, onChangeCurrency, direction }) => {
+interface ICurrencySelector {
+  currencyList: ISymbolList
+  currentCurrency: string
+  onChangeCurrency: (event: IMUISelect) => void
+  direction: string
+}
+
+const CurrencySelector = ({ currencyList = [], currentCurrency, onChangeCurrency, direction }: ICurrencySelector): JSX.Element => {
   const classes = useStyles();
-  const options = currencyList.map(([symbol, description]) => {
+  const options = currencyList.map(([symbol, description]: [string, string]) => {
     return <MenuItem value={ symbol } key={ symbol }>{ description }</MenuItem>
   })
   const label = direction === 'from' ? 'Convert From' : 'Convert To'
@@ -28,7 +36,7 @@ const CurrencySelector = ({ currencyList = [], currentCurrency, onChangeCurrency
         labelId="demo-simple-select-label"
         id="demo-simple-select"
         value={ currentCurrency }
-        onChange={ onChangeCurrency }
+        onChange={ (event) => onChangeCurrency(event) }
       >
        { options }
       </Select>

@@ -1,10 +1,13 @@
 import { getIp } from "./getIp"
 
-const detectCurrency = async () => {
+const detectCurrency = async (): Promise<string> => {
   const apiKey = '6x9dxiyw5o3gk16o'
   const apiUrl = 'https://api.ipregistry.co/'
+
   const ip = await getIp()
+  
   const requestUrl = new URL(ip, apiUrl)
+
   requestUrl.searchParams.append('key', apiKey)
   requestUrl.searchParams.append('fields', 'currency')
 

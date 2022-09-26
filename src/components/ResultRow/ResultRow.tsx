@@ -1,6 +1,11 @@
 import TextField from '@material-ui/core/TextField';
 
-const ResultRow = ({ result, setResult }) => {
+interface IResultRow {
+  result: number
+  setResult: (value: number) => void
+}
+
+const ResultRow = ({ result, setResult }: IResultRow) => {
   return (
     <TextField 
       label="Result"
@@ -10,7 +15,7 @@ const ResultRow = ({ result, setResult }) => {
       }}
       variant='outlined'
       fullWidth
-      onChange={(event) => setResult(event.target.value)}
+      onChange={(event) => setResult(Number(event.target.value))}
     >
         { result }
     </TextField>

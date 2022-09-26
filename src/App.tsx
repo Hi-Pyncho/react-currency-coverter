@@ -1,15 +1,16 @@
 import { CurrencyRow, CurrencySelector, ResultRow } from "./components";
 import { useEffect, useState } from "react";
-import { convertCurrency} from "./api/currency";
+import { convertCurrency} from "./api/Currency";
 import { detectCurrency } from "./api/detectCurrency";
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { getCurrencyData, getDefaultCurrencySymbol } from "./utils/getCurrencyData";
+import { ISymbolList, IMUISelect } from './types'
 
 import './App.css'
 
-function App() {
-  const [symbolsList, setSymbolList] = useState([])
+const App: React.FC = () => {
+  const [symbolsList, setSymbolList] = useState<ISymbolList>([])
   const [currentCurrencyFrom, setCurrentCurrencyFrom] = useState('')
   const [currentCurrencyTo, setCurrentCurrencyTo] = useState('')
   const [currencyValueFrom, setCurrencyValueFrom] = useState(0)
@@ -24,14 +25,14 @@ function App() {
     })
   }, [])
 
-  const updateCurrency = (value, currencyTo) => {
+  const updateCurrency = (value: number, currencyTo: string) => {
     convertCurrency(currentCurrencyFrom, currencyTo, value).then(result => {
       setCurrencyValueTo(result)
     })
   }
 
-  const onChangeCurrency = (type) => (event) => {
-    const selectValue = event.target.value
+  const onChangeCurrency = (type: 'from' | 'to') => (event: IMUISelect): void => {
+    const selectValue = event.target.value as string
     
     switch (type) {
       case 'from':
@@ -47,8 +48,8 @@ function App() {
     updateCurrency(currencyValueFrom, selectValue)
   }
 
-  const onChangeCurrencyInput = (event) => {
-    const value = event.target.value
+  const onChangeCurrencyInput: React.ChangeEventHandler<HTMLInputElement > = (event) => {
+    const value = Number(event.target.value)
     setCurrencyValueFrom(value)
 
     updateCurrency(value, currentCurrencyTo)
@@ -62,15 +63,8 @@ function App() {
       }}>
         Currency Converter
       </h1>
-      <Grid
-        sx={{
-          p: '2rem',
-        }}
-        container
-        spacing={2}
-        alignItems="center"
-        justifyContent="center"
-      >
+      <Grid container spacing={2} alignItems="center" justifyContent="center" style={{ padding: '2rem' }}>
+        
         <Grid item xs={12} sm={8}>
           <CurrencyRow onChangeCurrencyInput={ onChangeCurrencyInput } currencyValue={ currencyValueFrom } />
         </Grid>
