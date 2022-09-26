@@ -1,569 +1,273 @@
-const currencyDict = [
-  {
-    "currency": "Albania Lek",
-    "abbreviation": "ALL",
-    "symbol": "&#76;&#101;&#107;"
-  },
-  {
-    "currency": "Afghanistan Afghani",
-    "abbreviation": "AFN",
-    "symbol": "&#1547;"
-  },
-  {
-    "currency": "Argentina Peso",
-    "abbreviation": "ARS",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Aruba Guilder",
-    "abbreviation": "AWG",
-    "symbol": "&#402;"
-  },
-  {
-    "currency": "Australia Dollar",
-    "abbreviation": "AUD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Azerbaijan New Manat",
-    "abbreviation": "AZN",
-    "symbol": "&#1084;&#1072;&#1085;"
-  },
-  {
-    "currency": "Bahamas Dollar",
-    "abbreviation": "BSD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Barbados Dollar",
-    "abbreviation": "BBD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Belarus Ruble",
-    "abbreviation": "BYR",
-    "symbol": "&#112;&#46;"
-  },
-  {
-    "currency": "Belize Dollar",
-    "abbreviation": "BZD",
-    "symbol": "&#66;&#90;&#36;"
-  },
-  {
-    "currency": "Bermuda Dollar",
-    "abbreviation": "BMD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Bolivia Boliviano",
-    "abbreviation": "BOB",
-    "symbol": "&#36;&#98;"
-  },
-  {
-    "currency": "Bosnia and Herzegovina Convertible Marka",
-    "abbreviation": "BAM",
-    "symbol": "&#75;&#77;"
-  },
-  {
-    "currency": "Botswana Pula",
-    "abbreviation": "BWP",
-    "symbol": "&#80;"
-  },
-  {
-    "currency": "Bulgaria Lev",
-    "abbreviation": "BGN",
-    "symbol": "&#1083;&#1074;"
-  },
-  {
-    "currency": "Brazil Real",
-    "abbreviation": "BRL",
-    "symbol": "&#82;&#36;"
-  },
-  {
-    "currency": "Brunei Darussalam Dollar",
-    "abbreviation": "BND",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Cambodia Riel",
-    "abbreviation": "KHR",
-    "symbol": "&#6107;"
-  },
-  {
-    "currency": "Canada Dollar",
-    "abbreviation": "CAD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Cayman Islands Dollar",
-    "abbreviation": "KYD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Chile Peso",
-    "abbreviation": "CLP",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "China Yuan Renminbi",
-    "abbreviation": "CNY",
-    "symbol": "&#165;"
-  },
-  {
-    "currency": "Colombia Peso",
-    "abbreviation": "COP",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Costa Rica Colon",
-    "abbreviation": "CRC",
-    "symbol": "&#8353;"
-  },
-  {
-    "currency": "Croatia Kuna",
-    "abbreviation": "HRK",
-    "symbol": "&#107;&#110;"
-  },
-  {
-    "currency": "Cuba Peso",
-    "abbreviation": "CUP",
-    "symbol": "&#8369;"
-  },
-  {
-    "currency": "Czech Republic Koruna",
-    "abbreviation": "CZK",
-    "symbol": "&#75;&#269;"
-  },
-  {
-    "currency": "Denmark Krone",
-    "abbreviation": "DKK",
-    "symbol": "&#107;&#114;"
-  },
-  {
-    "currency": "Dominican Republic Peso",
-    "abbreviation": "DOP",
-    "symbol": "&#82;&#68;&#36;"
-  },
-  {
-    "currency": "East Caribbean Dollar",
-    "abbreviation": "XCD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Egypt Pound",
-    "abbreviation": "EGP",
-    "symbol": "&#163;"
-  },
-  {
-    "currency": "El Salvador Colon",
-    "abbreviation": "SVC",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Estonia Kroon",
-    "abbreviation": "EEK",
-    "symbol": "&#107;&#114;"
-  },
-  {
-    "currency": "Euro Member Countries",
-    "abbreviation": "EUR",
-    "symbol": "&#8364;"
-  },
-  {
-    "currency": "Falkland Islands (Malvinas) Pound",
-    "abbreviation": "FKP",
-    "symbol": "&#163;"
-  },
-  {
-    "currency": "Fiji Dollar",
-    "abbreviation": "FJD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Ghana Cedis",
-    "abbreviation": "GHC",
-    "symbol": "&#162;"
-  },
-  {
-    "currency": "Gibraltar Pound",
-    "abbreviation": "GIP",
-    "symbol": "&#163;"
-  },
-  {
-    "currency": "Guatemala Quetzal",
-    "abbreviation": "GTQ",
-    "symbol": "&#81;"
-  },
-  {
-    "currency": "Guernsey Pound",
-    "abbreviation": "GGP",
-    "symbol": "&#163;"
-  },
-  {
-    "currency": "Guyana Dollar",
-    "abbreviation": "GYD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Honduras Lempira",
-    "abbreviation": "HNL",
-    "symbol": "&#76;"
-  },
-  {
-    "currency": "Hong Kong Dollar",
-    "abbreviation": "HKD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Hungary Forint",
-    "abbreviation": "HUF",
-    "symbol": "&#70;&#116;"
-  },
-  {
-    "currency": "Iceland Krona",
-    "abbreviation": "ISK",
-    "symbol": "&#107;&#114;"
-  },
-  {
-    "currency": "India Rupee",
-    "abbreviation": "INR",
-    "symbol": null
-  },
-  {
-    "currency": "Indonesia Rupiah",
-    "abbreviation": "IDR",
-    "symbol": "&#82;&#112;"
-  },
-  {
-    "currency": "Iran Rial",
-    "abbreviation": "IRR",
-    "symbol": "&#65020;"
-  },
-  {
-    "currency": "Isle of Man Pound",
-    "abbreviation": "IMP",
-    "symbol": "&#163;"
-  },
-  {
-    "currency": "Israel Shekel",
-    "abbreviation": "ILS",
-    "symbol": "&#8362;"
-  },
-  {
-    "currency": "Jamaica Dollar",
-    "abbreviation": "JMD",
-    "symbol": "&#74;&#36;"
-  },
-  {
-    "currency": "Japan Yen",
-    "abbreviation": "JPY",
-    "symbol": "&#165;"
-  },
-  {
-    "currency": "Jersey Pound",
-    "abbreviation": "JEP",
-    "symbol": "&#163;"
-  },
-  {
-    "currency": "Kazakhstan Tenge",
-    "abbreviation": "KZT",
-    "symbol": "&#1083;&#1074;"
-  },
-  {
-    "currency": "Korea (South) Won",
-    "abbreviation": "KRW",
-    "symbol": "&#8361;"
-  },
-  {
-    "currency": "Kyrgyzstan Som",
-    "abbreviation": "KGS",
-    "symbol": "&#1083;&#1074;"
-  },
-  {
-    "currency": "Laos Kip",
-    "abbreviation": "LAK",
-    "symbol": "&#8365;"
-  },
-  {
-    "currency": "Latvia Lat",
-    "abbreviation": "LVL",
-    "symbol": "&#76;&#115;"
-  },
-  {
-    "currency": "Lebanon Pound",
-    "abbreviation": "LBP",
-    "symbol": "&#163;"
-  },
-  {
-    "currency": "Liberia Dollar",
-    "abbreviation": "LRD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Lithuania Litas",
-    "abbreviation": "LTL",
-    "symbol": "&#76;&#116;"
-  },
-  {
-    "currency": "Macedonia Denar",
-    "abbreviation": "MKD",
-    "symbol": "&#1076;&#1077;&#1085;"
-  },
-  {
-    "currency": "Malaysia Ringgit",
-    "abbreviation": "MYR",
-    "symbol": "&#82;&#77;"
-  },
-  {
-    "currency": "Mauritius Rupee",
-    "abbreviation": "MUR",
-    "symbol": "&#8360;"
-  },
-  {
-    "currency": "Mexico Peso",
-    "abbreviation": "MXN",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Mongolia Tughrik",
-    "abbreviation": "MNT",
-    "symbol": "&#8366;"
-  },
-  {
-    "currency": "Mozambique Metical",
-    "abbreviation": "MZN",
-    "symbol": "&#77;&#84;"
-  },
-  {
-    "currency": "Namibia Dollar",
-    "abbreviation": "NAD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Nepal Rupee",
-    "abbreviation": "NPR",
-    "symbol": "&#8360;"
-  },
-  {
-    "currency": "Netherlands Antilles Guilder",
-    "abbreviation": "ANG",
-    "symbol": "&#402;"
-  },
-  {
-    "currency": "New Zealand Dollar",
-    "abbreviation": "NZD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Nicaragua Cordoba",
-    "abbreviation": "NIO",
-    "symbol": "&#67;&#36;"
-  },
-  {
-    "currency": "Nigeria Naira",
-    "abbreviation": "NGN",
-    "symbol": "&#8358;"
-  },
-  {
-    "currency": "Korea (North) Won",
-    "abbreviation": "KPW",
-    "symbol": "&#8361;"
-  },
-  {
-    "currency": "Norway Krone",
-    "abbreviation": "NOK",
-    "symbol": "&#107;&#114;"
-  },
-  {
-    "currency": "Oman Rial",
-    "abbreviation": "OMR",
-    "symbol": "&#65020;"
-  },
-  {
-    "currency": "Pakistan Rupee",
-    "abbreviation": "PKR",
-    "symbol": "&#8360;"
-  },
-  {
-    "currency": "Panama Balboa",
-    "abbreviation": "PAB",
-    "symbol": "&#66;&#47;&#46;"
-  },
-  {
-    "currency": "Paraguay Guarani",
-    "abbreviation": "PYG",
-    "symbol": "&#71;&#115;"
-  },
-  {
-    "currency": "Peru Nuevo Sol",
-    "abbreviation": "PEN",
-    "symbol": "&#83;&#47;&#46;"
-  },
-  {
-    "currency": "Philippines Peso",
-    "abbreviation": "PHP",
-    "symbol": "&#8369;"
-  },
-  {
-    "currency": "Poland Zloty",
-    "abbreviation": "PLN",
-    "symbol": "&#122;&#322;"
-  },
-  {
-    "currency": "Qatar Riyal",
-    "abbreviation": "QAR",
-    "symbol": "&#65020;"
-  },
-  {
-    "currency": "Romania New Leu",
-    "abbreviation": "RON",
-    "symbol": "&#108;&#101;&#105;"
-  },
-  {
-    "currency": "Russia Ruble",
-    "abbreviation": "RUB",
-    "symbol": "&#1088;&#1091;&#1073;"
-  },
-  {
-    "currency": "Saint Helena Pound",
-    "abbreviation": "SHP",
-    "symbol": "&#163;"
-  },
-  {
-    "currency": "Saudi Arabia Riyal",
-    "abbreviation": "SAR",
-    "symbol": "&#65020;"
-  },
-  {
-    "currency": "Serbia Dinar",
-    "abbreviation": "RSD",
-    "symbol": "&#1044;&#1080;&#1085;&#46;"
-  },
-  {
-    "currency": "Seychelles Rupee",
-    "abbreviation": "SCR",
-    "symbol": "&#8360;"
-  },
-  {
-    "currency": "Singapore Dollar",
-    "abbreviation": "SGD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Solomon Islands Dollar",
-    "abbreviation": "SBD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Somalia Shilling",
-    "abbreviation": "SOS",
-    "symbol": "&#83;"
-  },
-  {
-    "currency": "South Africa Rand",
-    "abbreviation": "ZAR",
-    "symbol": "&#82;"
-  },
-  {
-    "currency": "Sri Lanka Rupee",
-    "abbreviation": "LKR",
-    "symbol": "&#8360;"
-  },
-  {
-    "currency": "Sweden Krona",
-    "abbreviation": "SEK",
-    "symbol": "&#107;&#114;"
-  },
-  {
-    "currency": "Switzerland Franc",
-    "abbreviation": "CHF",
-    "symbol": "&#67;&#72;&#70;"
-  },
-  {
-    "currency": "Suriname Dollar",
-    "abbreviation": "SRD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Syria Pound",
-    "abbreviation": "SYP",
-    "symbol": "&#163;"
-  },
-  {
-    "currency": "Taiwan New Dollar",
-    "abbreviation": "TWD",
-    "symbol": "&#78;&#84;&#36;"
-  },
-  {
-    "currency": "Thailand Baht",
-    "abbreviation": "THB",
-    "symbol": "&#3647;"
-  },
-  {
-    "currency": "Trinidad and Tobago Dollar",
-    "abbreviation": "TTD",
-    "symbol": "&#84;&#84;&#36;"
-  },
-  {
-    "currency": "Turkey Lira",
-    "abbreviation": "TRY",
-    "symbol": null
-  },
-  {
-    "currency": "Turkey Lira",
-    "abbreviation": "TRL",
-    "symbol": "&#8356;"
-  },
-  {
-    "currency": "Tuvalu Dollar",
-    "abbreviation": "TVD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Ukraine Hryvna",
-    "abbreviation": "UAH",
-    "symbol": "&#8372;"
-  },
-  {
-    "currency": "United Kingdom Pound",
-    "abbreviation": "GBP",
-    "symbol": "&#163;"
-  },
-  {
-    "currency": "United States Dollar",
-    "abbreviation": "USD",
-    "symbol": "&#36;"
-  },
-  {
-    "currency": "Uruguay Peso",
-    "abbreviation": "UYU",
-    "symbol": "&#36;&#85;"
-  },
-  {
-    "currency": "Uzbekistan Som",
-    "abbreviation": "UZS",
-    "symbol": "&#1083;&#1074;"
-  },
-  {
-    "currency": "Venezuela Bolivar",
-    "abbreviation": "VEF",
-    "symbol": "&#66;&#115;"
-  },
-  {
-    "currency": "Viet Nam Dong",
-    "abbreviation": "VND",
-    "symbol": "&#8363;"
-  },
-  {
-    "currency": "Yemen Rial",
-    "abbreviation": "YER",
-    "symbol": "&#65020;"
-  },
-  {
-    "currency": "Zimbabwe Dollar",
-    "abbreviation": "ZWD",
-    "symbol": "&#90;&#36;"
-  }
-]
+const currencyDict = {
+  "1inch": "1inch Network",
+  "aave": "Aave",
+  "ada": "Cardano",
+  "aed": "United Arab Emirates Dirham",
+  "afn": "Afghan afghani",
+  "algo": "Algorand",
+  "all": "Albanian lek",
+  "amd": "Armenian dram",
+  "amp": "Synereo",
+  "ang": "Netherlands Antillean Guilder",
+  "aoa": "Angolan kwanza",
+  "ar": "Arweave",
+  "ars": "Argentine peso",
+  "atom": "Atomic Coin",
+  "aud": "Australian dollar",
+  "avax": "Avalanche",
+  "awg": "Aruban florin",
+  "axs": "AXS",
+  "azn": "Azerbaijani manat",
+  "bam": "Bosnia-Herzegovina Convertible Mark",
+  "bat": "Basic Attention Token",
+  "bbd": "Bajan dollar",
+  "bch": "Bitcoin Cash",
+  "bdt": "Bangladeshi taka",
+  "bgn": "Bulgarian lev",
+  "bhd": "Bahraini dinar",
+  "bif": "Burundian Franc",
+  "bmd": "Bermudan dollar",
+  "bnb": "Binance Coin",
+  "bnd": "Brunei dollar",
+  "bob": "Bolivian boliviano",
+  "brl": "Brazilian real",
+  "bsd": "Bahamian dollar",
+  "bsv": "Bitcoin SV",
+  "btc": "Bitcoin",
+  "btcb": "Bitcoin BEP2",
+  "btg": "Bitcoin Gold",
+  "btn": "Bhutan currency",
+  "busd": "Binance USD",
+  "bwp": "Botswanan Pula",
+  "byn": "New Belarusian Ruble",
+  "byr": "Belarusian Ruble",
+  "bzd": "Belize dollar",
+  "cad": "Canadian dollar",
+  "cake": "PancakeSwap",
+  "cdf": "Congolese franc",
+  "celo": "Celo",
+  "chf": "Swiss franc",
+  "chz": "Chiliz",
+  "clf": "Chilean Unit of Account (UF)",
+  "clp": "Chilean peso",
+  "cny": "Chinese Yuan",
+  "comp": "Compound Coin",
+  "cop": "Colombian peso",
+  "crc": "Costa Rican Colón",
+  "cro": "Crypto.com Chain Token",
+  "crv": "Cravy",
+  "cuc": "Cuban peso",
+  "cup": "Cuban Peso",
+  "cve": "Cape Verdean escudo",
+  "cvx": "Convex Finance",
+  "czk": "Czech koruna",
+  "dai": "Dai",
+  "dash": "Dash",
+  "dcr": "Decred",
+  "dfi": "DfiStarter",
+  "djf": "Djiboutian franc",
+  "dkk": "Danish krone",
+  "doge": "Dogecoin",
+  "dop": "Dominican peso",
+  "dot": "Dotcoin",
+  "dzd": "Algerian dinar",
+  "egld": "Elrond",
+  "egp": "Egyptian pound",
+  "enj": "Enjin Coin",
+  "eos": "EOS",
+  "ern": "Eritrean nakfa",
+  "etb": "Ethiopian birr",
+  "etc": "Ethereum Classic",
+  "eth": "Ether",
+  "eur": "Euro",
+  "fei": "Fei USD",
+  "fil": "FileCoin",
+  "fjd": "Fijian dollar",
+  "fkp": "Falkland Islands pound",
+  "flow": "Flow",
+  "frax": "Frax",
+  "ftm": "Fantom",
+  "ftt": "FarmaTrust",
+  "gala": "Gala",
+  "gbp": "Pound sterling",
+  "gel": "Georgian lari",
+  "ggp": "GGPro",
+  "ghs": "Ghanaian cedi",
+  "gip": "Gibraltar pound",
+  "gmd": "Gambian dalasi",
+  "gnf": "Guinean franc",
+  "gno": "Gnosis",
+  "grt": "Golden Ratio Token",
+  "gt": "GateToken",
+  "gtq": "Guatemalan quetzal",
+  "gyd": "Guyanaese Dollar",
+  "hbar": "Hedera",
+  "hkd": "Hong Kong dollar",
+  "hnl": "Honduran lempira",
+  "hnt": "Helium",
+  "hot": "Hydro Protocol",
+  "hrk": "Croatian kuna",
+  "ht": "Huobi Token",
+  "htg": "Haitian gourde",
+  "huf": "Hungarian forint",
+  "icp": "Internet Computer",
+  "idr": "Indonesian rupiah",
+  "ils": "Israeli New Shekel",
+  "imp": "CoinIMP",
+  "inj": "Injective",
+  "inr": "Indian rupee",
+  "iqd": "Iraqi dinar",
+  "irr": "Iranian rial",
+  "isk": "Icelandic króna",
+  "jep": "Jersey Pound",
+  "jmd": "Jamaican dollar",
+  "jod": "Jordanian dinar",
+  "jpy": "Japanese yen",
+  "kava": "Kava",
+  "kcs": "Kucoin",
+  "kda": "Kadena",
+  "kes": "Kenyan shilling",
+  "kgs": "Kyrgystani Som",
+  "khr": "Cambodian riel",
+  "klay": "Klaytn",
+  "kmf": "Comorian franc",
+  "knc": "Kyber Network",
+  "kpw": "North Korean won",
+  "krw": "South Korean won",
+  "ksm": "Kusama",
+  "kwd": "Kuwaiti dinar",
+  "kyd": "Cayman Islands dollar",
+  "kzt": "Kazakhstani tenge",
+  "lak": "Laotian Kip",
+  "lbp": "Lebanese pound",
+  "leo": "LEOcoin",
+  "link": "ChainLink",
+  "lkr": "Sri Lankan rupee",
+  "lrc": "Loopring",
+  "lrd": "Liberian dollar",
+  "lsl": "Lesotho loti",
+  "ltc": "Litecoin",
+  "ltl": "Lithuanian litas",
+  "luna": "Luna Coin",
+  "lvl": "Latvian lats",
+  "lyd": "Libyan dinar",
+  "mad": "Moroccan dirham",
+  "mana": "Decentraland",
+  "matic": "Polygon",
+  "mdl": "Moldovan leu",
+  "mga": "Malagasy ariary",
+  "mina": "Mina",
+  "miota": "IOTA",
+  "mkd": "Macedonian denar",
+  "mkr": "Maker",
+  "mmk": "Myanmar Kyat",
+  "mnt": "Mongolian tugrik",
+  "mop": "Macanese pataca",
+  "mro": "Mauritanian ouguiya",
+  "mur": "Mauritian rupee",
+  "mvr": "Maldivian rufiyaa",
+  "mwk": "Malawian kwacha",
+  "mxn": "Mexican peso",
+  "myr": "Malaysian ringgit",
+  "mzn": "Mozambican Metical",
+  "nad": "Namibian dollar",
+  "near": "NEAR Protocol",
+  "neo": "NEO",
+  "nexo": "NEXO",
+  "ngn": "Nigerian naira",
+  "nio": "Nicaraguan córdoba",
+  "nok": "Norwegian krone",
+  "npr": "Nepalese rupee",
+  "nzd": "New Zealand dollar",
+  "okb": "Okex",
+  "omr": "Omani rial",
+  "one": "Menlo One",
+  "pab": "Panamanian balboa",
+  "paxg": "PAX Gold",
+  "pen": "Sol",
+  "pgk": "Papua New Guinean kina",
+  "php": "Philippine peso",
+  "pkr": "Pakistani rupee",
+  "pln": "Poland złoty",
+  "pyg": "Paraguayan guarani",
+  "qar": "Qatari Rial",
+  "qnt": "Quant",
+  "qtum": "QTUM",
+  "ron": "Romanian leu",
+  "rsd": "Serbian dinar",
+  "rub": "Russian ruble",
+  "rune": "THORChain (ERC20)",
+  "rwf": "Rwandan Franc",
+  "sand": "BeachCoin",
+  "sar": "Saudi riyal",
+  "sbd": "Solomon Islands dollar",
+  "scr": "Seychellois rupee",
+  "sdg": "Sudanese pound",
+  "sek": "Swedish krona",
+  "sgd": "Singapore dollar",
+  "shib": "Shiba Inu",
+  "shp": "Saint Helena pound",
+  "sll": "Sierra Leonean leone",
+  "sol": "Sola",
+  "sos": "Somali shilling",
+  "srd": "Surinamese dollar",
+  "std": "São Tomé and Príncipe Dobra (pre-2018)",
+  "stx": "Stox",
+  "svc": "Salvadoran Colón",
+  "syp": "Syrian pound",
+  "szl": "Swazi lilangeni",
+  "thb": "Thai baht",
+  "theta": "Theta",
+  "tjs": "Tajikistani somoni",
+  "tmt": "Turkmenistani manat",
+  "tnd": "Tunisian dinar",
+  "top": "Tongan Paʻanga",
+  "trx": "TRON",
+  "try": "Turkish lira",
+  "ttd": "Trinidad & Tobago Dollar",
+  "ttt": "Tap Project",
+  "tusd": "True USD",
+  "twd": "New Taiwan dollar",
+  "tzs": "Tanzanian shilling",
+  "uah": "Ukrainian hryvnia",
+  "ugx": "Ugandan shilling",
+  "uni": "Universe",
+  "usd": "United States dollar",
+  "usdc": "USD Coin",
+  "usdp": "USDP Stablecoin",
+  "usdt": "Tether",
+  "uyu": "Uruguayan peso",
+  "uzs": "Uzbekistani som",
+  "vet": "Vechain",
+  "vnd": "Vietnamese dong",
+  "vuv": "Vanuatu vatu",
+  "waves": "Waves",
+  "wbtc": "Wrapped Bitcoin",
+  "wemix": "WEMIX",
+  "wst": "Samoan tala",
+  "xaf": "Central African CFA franc",
+  "xag": "Silver Ounce",
+  "xau": "XauCoin",
+  "xcd": "East Caribbean dollar",
+  "xdc": "XDC Network",
+  "xdr": "Special Drawing Rights",
+  "xec": "Eternal Coin",
+  "xem": "NEM",
+  "xlm": "Stellar",
+  "xmr": "Monero",
+  "xof": "West African CFA franc",
+  "xpf": "CFP franc",
+  "xrp": "XRP",
+  "xtz": "Tezos",
+  "yer": "Yemeni rial",
+  "zar": "South African rand",
+  "zec": "ZCash",
+  "zil": "Zilliqa",
+  "zmk": "Zambian kwacha",
+  "zmw": "Zambian Kwacha",
+  "zwl": "Zimbabwean Dollar"
+}
 
-export { currencyDict }
+export {
+  currencyDict
+}
