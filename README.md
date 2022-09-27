@@ -1,4 +1,4 @@
-# React test task (Currency Coverter)
+# React test task (Currency Coverter + Typescript/Eslint/Stylelint)
 
 You can see the project at [this link](https://hi-pyncho.github.io/react-currency-coverter/)
 
