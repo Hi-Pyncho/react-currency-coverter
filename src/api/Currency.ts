@@ -1,4 +1,4 @@
-async function convertCurrency(from, to, amount): Promise<number> {
+async function convertCurrency(from: string, to: string, amount: number): Promise<number> {
   const apiPath = 'https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/'
   const requestUrl = new URL(`${from}/${to}.json`, apiPath)
  

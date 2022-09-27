@@ -2,10 +2,10 @@ import TextField from '@material-ui/core/TextField';
 
 interface IResultRow {
   result: number
-  setResult: (value: number) => void
+  setResult: React.Dispatch<React.SetStateAction<number>>
 }
 
-const ResultRow = ({ result, setResult }: IResultRow) => {
+const ResultRow = ({ result, setResult }: IResultRow): JSX.Element => {
   return (
     <TextField 
       label="Result"
